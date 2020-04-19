@@ -44,6 +44,7 @@ GTCTTGGCGCGACTTCCTCGACTCACTCTCTTTCCCCCGTGAGTCGTGGAACCTCGCCCGAGGGT
 ...................................CCCGTGAGTCGTGGAACCTCGCCCGAGG..	1
 .....................................CGTGAGTCGTGGAACCTCGCCCGAGG..	1
 ......................................GTGAGTCGTGGAACCTCGCCCGAGGGT	1
+
 .((((((.((((.((((.((((((((............)))))))).))))..)))))))))).. (-31.20)
 
 output:
@@ -53,3 +54,18 @@ microRNA haipirn header	5'	5'count	3'	3'count
 For the example provided we get:
 
 X/50661951-50662015(+)_Dog_novel_microRNA	5'	17	3'	116
+
+
+
+*get_mature_coords_and_counts.py*
+Identifies genomic position and calculates abundance of miRNA-5p and miRNA-3p from small RNA read alignments
+
+python get_mature_coords_and_counts.py alignments.txt
+
+Input is the same as for *micro_RNA_hairpin_read_counts.pl*
+
+Output format is the following:
+X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661990	50662011	3p	miRNA	116	50661991	50661997
+X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661954	50661974	5p	star	18	50661955	50661961
+
+
