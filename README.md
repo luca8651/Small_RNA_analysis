@@ -87,6 +87,7 @@ Input is the same as for *micro_RNA_hairpin_read_counts.pl*
 
 Output format is the following:
 X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661990	50662011	3p	miRNA	116	50661991	50661997
+
 X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661954	50661974	5p	star	18	50661955	50661961
 
 
