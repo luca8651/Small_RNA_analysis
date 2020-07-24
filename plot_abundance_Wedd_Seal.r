@@ -1,13 +1,4 @@
 
-#data_abundance is a matrix of concatenated rows like this:
-#mir1 blood
-#mir 2 blood
-#...
-#mir n blood
-#mir1 heart
-#mir2 heart
-#...
-#mir n heart
 require(lattice)
 
 #Load expression table: columns are base positions across the miRNA hairpin; rows are miRNA loci)
