@@ -91,3 +91,5 @@ X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661990	5066201
 X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661954	50661974	5p	star	18	50661955	50661961
 
 
+*plot_abundance_Wedd_seal.r*
+This R script was used to generate abundance plots for a set of microRNA loci (hairpin sequences) across different samples. The script generates a abundance plot for each locus, where each line represents the read coverage across the locus for a specific sample. The uploaded version is written specifically for the microRNA annotation (and expression data) presented in Penso-Dolfin et al. 2020 BMC Genomics paper (https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6675-0, see also Supplemetary data)
