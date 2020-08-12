@@ -14,8 +14,6 @@ open (FILE,  "$lines" ) or die "can't open : $!";
 
 my $cont=0;
 
-my $first=1;
-
 while (my $line = <FILE>) {  
 
 
@@ -25,7 +23,6 @@ $ind=index($line,">");
 
 if ( eof==0 && $ind == -1 )  {   #sequence
 $L=length($line)-1;
-$first=2;
 }
 
 elsif (eof==0)     {
