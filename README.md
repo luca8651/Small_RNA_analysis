@@ -93,3 +93,52 @@ X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661954	5066197
 
 *plot_abundance_Wedd_Seal.r*
 This R script was used to generate abundance plots for a set of microRNA loci (hairpin sequences) across different samples. The script generates abundance plots for each locus, where each line represents the read coverage across the locus for a specific sample. The uploaded version is written specifically for the microRNA annotation (and expression data) presented in Penso-Dolfin et al. 2020 BMC Genomics paper (https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-020-6675-0, see also Supplemetary data)
+
+
+*make_redundant.pl*
+usage: make_redundant.pl small_rna_data.fa
+
+This script takes as input a non redundant (that is, each sequence appears only once) list of small RNA reads in FASTA format, and converts it into redundant format (each sequence appears as many times as its count in the sample).
+Each sequence entry in the input file must have the following format:
+
+\>\[sequence\](count)
+
+\[sequence\]
+
+For example:
+
+\>TTGGCGCGACTTCCTCGACTC(5)
+
+TTGGCGCGACTTCCTCGACTC
+
+
+The output is the redundant list of sequences.  Using the same example, entry
+
+\>TTGGCGCGACTTCCTCGACTC(5)
+
+TTGGCGCGACTTCCTCGACTC
+
+will be converted into
+
+\>TTGGCGCGACTTCCTCGACTC
+
+TTGGCGCGACTTCCTCGACTC
+
+\>TTGGCGCGACTTCCTCGACTC
+
+TTGGCGCGACTTCCTCGACTC
+
+\>TTGGCGCGACTTCCTCGACTC
+
+TTGGCGCGACTTCCTCGACTC
+
+\>TTGGCGCGACTTCCTCGACTC
+
+TTGGCGCGACTTCCTCGACTC
+
+\>TTGGCGCGACTTCCTCGACTC
+
+TTGGCGCGACTTCCTCGACTC
+
+
+
