@@ -165,7 +165,6 @@ if count5>count3:
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t5p\tmiRNA\t'+str(count5)+'\t'+str(startseed)+'\t'+str(endseed))
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t3p\tstar\t'+str(count3)+'\t'+str(startseed2)+'\t'+str(endseed2))	
 else:
-	print("test")
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t3p\tmiRNA\t'+str(count3)+'\t'+str(startseed)+'\t'+str(endseed))
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t5p\tstar\t'+str(count5)+'\t'+str(startseed2)+'\t'+str(endseed2))		
 									
