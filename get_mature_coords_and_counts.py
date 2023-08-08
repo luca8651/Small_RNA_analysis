@@ -67,8 +67,6 @@ with open(filename, "r") as f:
 			string4=string3[0]
 			string5=string4.split("/",1)
 			start=string5[1]
-			#print(line[0:-1]+'\t'+string1[0]+'\t'+string3[0]+'\t'+start+'\t'+end+'\t'+strand+'\t'+chrom)
-			#print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t')
 		elif cont==1:
 			cont=2
 			length=len(line)
@@ -115,7 +113,6 @@ with open(filename, "r") as f:
 					newstart1=int(end)-end1
 					endseed=int(newend1)-1
 					startseed=int(newend1)-7
-				#print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t3p\tmiRNA')
 
 			match=re.search('\t', line)
 			if match:
@@ -140,7 +137,6 @@ with open(filename, "r") as f:
 				elif match and first:
 					end2=i
 				
-			#print(str(center)+'\t'+str(start2)+'\t'+str(end2))
 			
 			if start2<center and fivep==0:
 				fivep=1
@@ -170,10 +166,7 @@ with open(filename, "r") as f:
 					endseed2=int(newend2)-1
 					startseed2=int(newend2)-7
 				
-				#print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t3p\tstar')
 
-			#if fivep and threep:
-			#	cont=4
 
 			match=re.search('\t', line)
 			if match:
@@ -186,7 +179,7 @@ with open(filename, "r") as f:
 					
 				
 			
-		#elif cont==4:
+
 			
 if count5>count3:
 
@@ -196,30 +189,4 @@ else:
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t3p\tmiRNA\t'+str(count3)+'\t'+str(startseed)+'\t'+str(endseed))
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t5p\tstar\t'+str(count5)+'\t'+str(startseed2)+'\t'+str(endseed2))		
 									
-		
-	
-#    next(f) # skip headings
-#    reader=csv.reader(f,delimiter='\t')
-#    for name,age in reader:
-#       names.append(name)
-#        ages.append(age) 
-
-#print(names)
-# ('Mark', 'Matt', 'John', 'Jason', 'Matt', 'Frank', 'Frank', 'Frank', 'Frank')
-#print(ages)
-# ('32', '29', '67', '45', '12', '11', '34', '65', '78')
-#print(names.index("Luca"))
-#for w in names:
-#	match = re.search('uc', w)
-#	if match:
-#		for n in range(0,len(names)-1):
-#			print(names[n] , w , int(ages[n])-int(ages[names.index("Luca")]))
-#			
-#		print(w +' is a match')
-#	if len(w) > 4:
-#		print(w +' is a longer name')
-#	else:
-#		print(w +' is a short name')
-
-
-		
+				
