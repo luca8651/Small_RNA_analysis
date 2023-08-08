@@ -91,13 +91,21 @@ Using the coordinate information included in the first row of each alignment (*c
 calculate the genomic position where the miRNA-5p and miRNA-3p have been mapped, as well as calculate their abundance.
 
 
-
 Output format is the following:
 ```
 X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661990	50662011	3p	miRNA	116	50661991	50661997
-
 X	50661951	50662015	+	X/50661951-50662015(+)_Dog_novel_microRNA	50661954	50661974	5p	star	18	50661955	50661961
 ```
+where the columns correspond to: chrom, hairpin start,hairpin end,strand,locus ID, miRNA start, miRNA end, location of the mapping, miRNA strand, miRNA abundance, seed start, seed end.
+
+## abundance_at_each_base.pl (adapted from a script developed by Simon Moxon, included with his consent)
+
+This script can be used to output small RNA base coverage from a sRNA/miRNA alignment file (same format required for *micro_RNA_hairpin_read_counts.pl*)
+It should be run with a command
+```
+perl ./abundance_at_each_base.pl: <input alignment file> <number of genome matching reads in sample (enter X for no normalisation)> <sample name>
+```
+The output is a TAB delimited file with the coverage across all base positions (see *abundance_at_each_base_example.txt* for an example output file)
 
 ## plot_abundance_Wedd_Seal.r
 This R script can be used to generate abundance plots for a set of microRNA loci (hairpin sequences) across different samples.
