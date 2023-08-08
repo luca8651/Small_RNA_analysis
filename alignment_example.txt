@@ -1,0 +1,25 @@
+X/50661951-50662015(+)_Dog_novel_microRNA
+GTCTTGGCGCGACTTCCTCGACTCACTCTCTTTCCCCCGTGAGTCGTGGAACCTCGCCCGAGGGT
+.......................................TGAGTCGTGGAACCTCGCCCGA....	83
+.........................................AGTCGTGGAACCTCGCCCGAG...	9
+.........................................AGTCGTGGAACCTCGCCCGA....	6
+.........................................AGTCGTGGAACCTCGCCCGAGG..	5
+...TTGGCGCGACTTCCTCGACTC.........................................	4
+....TGGCGCGACTTCCTCGACT..........................................	3
+....TGGCGCGACTTCCTCGACTCACT......................................	3
+.......................................TGAGTCGTGGAACCTCGCCC......	3
+.......................................TGAGTCGTGGAACCTCGCCCGAG...	3
+....TGGCGCGACTTCCTCGACTCA........................................	2
+.......................................TGAGTCGTGGAACCTCGCCCG.....	2
+...TTGGCGCGACTTCCTCGACT..........................................	1
+....TGGCGCGACTTCCTCGACTC.........................................	1
+....TGGCGCGACTTCCTCGACTCAC.......................................	1
+...TTGGCGCGACTTCCTCGACTCACT......................................	1
+.......CGCGACTTCCTCGACTCACT......................................	1
+..............................TTTCCCCCGTGAGTCGTGGAACC............	1
+........................................GAGTCGTGGAACCTCGCCCGA....	1
+..................................CCCCGTGAGTCGTGGAACCTCGCCCGAGG..	1
+...................................CCCGTGAGTCGTGGAACCTCGCCCGAGG..	1
+.....................................CGTGAGTCGTGGAACCTCGCCCGAGG..	1
+......................................GTGAGTCGTGGAACCTCGCCCGAGGGT	1
+.((((((.((((.((((.((((((((............)))))))).))))..))))))))))..	(-31.20)
