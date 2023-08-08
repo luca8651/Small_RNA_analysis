@@ -3,7 +3,7 @@ import csv
 import os
 import re
 import sys
-dir_fd = os.open('/usr/users/ga002/pensodl/', os.O_RDONLY)
+#dir_fd = os.open('/usr/users/ga002/pensodl/', os.O_RDONLY)
 filename = sys.argv[1]
 names=[]
 ages=[]
@@ -29,8 +29,6 @@ with open(filename, "r") as f:
 					print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t3p\tmiRNA\t'+str(count3)+'\t'+str(startseed)+'\t'+str(endseed))
 					print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t5p\tstar\t'+str(count5)+'\t'+str(startseed2)+'\t'+str(endseed2))
 				
-			
-
 			count3=0
 			count5=0
 			fivep=0			#used to print only the coords of the most abundant fivep read
@@ -47,14 +45,10 @@ with open(filename, "r") as f:
 			name=line[0:len(line)-1]
 			string1=line.split("_",1)
 			match=re.search('\)', string1[0])
-			#print("hey",match)
 			if match!=1:
 				string2=string1[0]+string1[1]
 			else:
 				string2=string1[0]
-			#print(string2)
-			#print(string1)
-			#string2=string1[0]
 			string3=string2.split("-",1)
 			string31=string3[1]
 			string32=string31.split("(",1)
@@ -78,13 +72,10 @@ with open(filename, "r") as f:
 			for i in range(0,len(line)-1):
 				match=re.search('[ATGC]', line[i])
 				if match and first==0:
-					#print(str(i)+'hey'+line[i])
 					start1=i
 					first=1
 				elif match and first:
 					end1=i
-				
-			#print(str(center)+'\t'+str(start1)+'\t'+str(end1))
 			cont=3							#this means that most abundant read has benn found 
 			
 			string6=line.split("\t",1)
@@ -100,7 +91,6 @@ with open(filename, "r") as f:
 					newstart1=int(end)-end1
 					endseed=int(newend1)-1
 					startseed=int(newend1)-7
-				#print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t5p\tmiRNA')
 			elif start1>center and threep==0:
 				threep=1
 				if strand == plus:
@@ -113,7 +103,6 @@ with open(filename, "r") as f:
 					newstart1=int(end)-end1
 					endseed=int(newend1)-1
 					startseed=int(newend1)-7
-
 			match=re.search('\t', line)
 			if match:
 				string6=line.split("\t",1)
@@ -121,9 +110,6 @@ with open(filename, "r") as f:
 					count5=count5+int(string6[1])
 				elif start1>center:
 					count3=count3+int(string6[1])  
-
-
-
 		elif cont==3:
 			first=0
 			start2=1
@@ -131,12 +117,10 @@ with open(filename, "r") as f:
 			for i in range(0,len(line)-1):
 				match=re.search('[ATGC]', line[i])
 				if match and first==0:
-					#print(str(i)+'hey'+line[i])
 					start2=i
 					first=1
 				elif match and first:
 					end2=i
-				
 			
 			if start2<center and fivep==0:
 				fivep=1
@@ -151,11 +135,9 @@ with open(filename, "r") as f:
 					newstart2=int(end)-end2
 					endseed2=int(newend2)-1
 					startseed2=int(newend2)-7
-				#print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t5p\tstar')
 			elif start2>center and threep==0:
 				threep=1
 				if strand == plus:
-					#print('yeey')
 					newstart2=int(start)+start2
 					newend2=int(start)+end2
 					startseed2=int(newstart2)+1
@@ -178,14 +160,12 @@ with open(filename, "r") as f:
 
 					
 				
-			
-
-			
+		
 if count5>count3:
-
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t5p\tmiRNA\t'+str(count5)+'\t'+str(startseed)+'\t'+str(endseed))
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t3p\tstar\t'+str(count3)+'\t'+str(startseed2)+'\t'+str(endseed2))	
 else:
+	print("test")
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart1)+'\t'+str(newend1)+'\t3p\tmiRNA\t'+str(count3)+'\t'+str(startseed)+'\t'+str(endseed))
 	print(chrom+'\t'+start+'\t'+end+'\t'+strand+'\t'+name+'\t'+str(newstart2)+'\t'+str(newend2)+'\t5p\tstar\t'+str(count5)+'\t'+str(startseed2)+'\t'+str(endseed2))		
 									
