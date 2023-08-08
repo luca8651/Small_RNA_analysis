@@ -122,10 +122,9 @@ with open(filename, "r") as f:
 				elif match and first:
 					end2=i
 			
-			if start2<center and fivep==0:
+			if start2<(center-10) and fivep==0:
 				fivep=1
 				if strand == plus:
-					#print('hey')
 					newstart2=int(start)+start2
 					newend2=int(start)+end2
 					startseed2=int(newstart2)+1
@@ -153,7 +152,7 @@ with open(filename, "r") as f:
 			match=re.search('\t', line)
 			if match:
 				string6=line.split("\t",1)
-				if start2<center:
+				if start2<(center-10):
 					count5=count5+int(string6[1])
 				elif start2>center:
 					count3=count3+int(string6[1])
