@@ -1,17 +1,23 @@
 #!/usr/bin/perl -w
-#use Text::CSV_XS;
+
 use strict;
 use warnings;
 use Data::Dumper qw(Dumper);
-#use Bio::SeqIO;
 use List::Util qw(min max);
-#use File::Slurp;
-#
-# use this command to convert an Ensembl gtf file to a suitable BED input file (first input file "$lines" ) 
-#  cat  Canis_familiaris.CanFam3.1.75.gtf  | awk '{print $1,$4,$5,$3,$6,$7}' | grep -v "#" | tr " " "\t" > Canis_familiaris.CanFam3.1.75.bed
 
-my $lines = shift; # 
+
+my $lines = shift; 
 my $coordall = shift;
+
+	if ( (!$lines) || (!$coordall) ){
+	print STDERR "$0: A script to identify identify the closest flanking protein coding genes based on a list of genomic coordinates\n";
+	print STDERR "$0: <genome_annotation.bed> <genomic coordinates.txt>\n";
+    print STDERR "the genome annotation file in BED format can be created from an Ensembl GTF file:\n";
+    print STDERR "cat Homo_sapiens.GRCh38.99.chr.gtf  | awk -F \"\\t\" \'BEGIN{OFS=\"\\t\"}{print \$1,\$4,\$5,\$3,\$9,\$7}\' | grep -v \"#\" | tr -d \" \" > annotation.bed \n";
+    print STDERR "coordiantes.txt contains a list of genomic coordinates, one in each row, with format chr/start-end(strand)\n";
+	exit();
+	}
+
 my $chr; 
 my $miRNA_start; 
 my $miRNA_end; 
@@ -62,7 +68,7 @@ $miRNA_end=$array2[1];           #160(+)
 $strand="+";
 
 if (index($miRNA_end,$strand)!=-1 ) {
-#$strand=substr($array2[1],0,1);
+
 }
 else   {
 $strand="-";
@@ -71,9 +77,6 @@ $strand="-";
 @array2=split(/\(/, $miRNA_end);    #160	+)
 $miRNA_end=$array2[0];
 
-
-
-#print "results is: $chr\t$miRNA_start\t$miRNA_end\t$strand\n";
 
 
 open (FILE,  "$lines" ) or die "can't open : $!";
@@ -85,9 +88,6 @@ while (my $line = <FILE>) {
 $line=substr($line,0,length($line)-1);
 
 @array=split(/\t/, $line);
-
-
-#if ( $line =~/protein/ && $array[3] eq "gene" && $line=~/GL019048/)
 
 
 
@@ -105,14 +105,13 @@ while ($i>=0)      {
 if ( ( $array3[$i]=~/name/ && $array3[$i]=~/gene/ ) || ($array3[$i]=~/Name=/) ) 
                        { 
 $geneLeft=$array3[$i];
-#$geneLeft=~ s/name//;
+
 $geneLeft=~ s/Name//;
 $geneLeft=~ s/gene_id//;
 $geneLeft=~ s/gene_name//;
-#$s =~ s/://g;
+
 $geneLeft=~ tr/"//;
 $geneLeft=~ tr/=//;
-#print "genel is $geneContainer\n";
 
                        }
 $i=$i-1;
@@ -123,12 +122,9 @@ $i=$i-1;
                            }
 elsif ($line =~/protein/ && $array[3] eq "gene" && $array[1]> $miRNA_end  && $array[0] eq $chr  && $found_right == 0    )                {
 
-#$test1=$array[1];
-#$test2=$array[2];
-#print "test1 is $test1,test2 is $test2,miRNA_end is $miRNA_end\n";
 $lineRight=$line;
 @array3=split(/\t/, $line);
-$geneRight=$array3[4];#$line;
+$geneRight=$array3[4];
 $found_right=1;
 
 @array3=split(/\;/, $geneRight);
@@ -136,8 +132,6 @@ $found_right=1;
 $i=@array3-1;
 
 while ($i>=0)      {
-#$test=$array3[$i];
-#print "test is $test\n";
 
 if ( ( $array3[$i]=~/name/ && $array3[$i]=~/gene/ ) || ($array3[$i]=~/Name=/) ) 
                        { 
@@ -163,7 +157,7 @@ elsif ($line =~/protein/ && $array[3] eq "gene" && $array[1]< $miRNA_start &&  $
 
 $lineContain=$line;
 @array3=split(/\t/, $line);
-$geneContainer=$array3[4];#$line;
+$geneContainer=$array3[4];
 
 $found_container=1;
 
@@ -177,14 +171,14 @@ if ( ( $array3[$i]=~/name/ && $array3[$i]=~/gene/ ) || ($array3[$i]=~/Name=/)  )
                        { 
 $geneContainer=$array3[$i]; 
 
-#$geneContainer=~ s/name//;
+
 $geneContainer=~ s/Name//;
 $geneContainer=~ s/gene_id//;
 $geneContainer=~ s/gene_name//;
-#$s =~ s/://g;
+
 $geneContainer=~ tr/"//;
 $geneContainer=~ tr/=//;
-#print "genec is $geneContainer\n";
+
 
 
                              }
@@ -211,7 +205,7 @@ print "$coord\t$geneLeft\_Upstream\t$lineLeft\n";
 
 if ( $found_container  )  {
 
-print "$coord\t$geneContainer\_container\t$lineContain\n";
+print "$coord\t$geneContainer\_host\t$lineContain\n";
 }
 
 if ( $found_right ) {
@@ -229,7 +223,7 @@ print "$coord\t$geneRight\_Upstream\t$lineRight\n";
 
 if ( $found_container  )  {
 
-print "$coord\t$geneContainer\_container\t$lineContain\n";
+print "$coord\t$geneContainer\_host\t$lineContain\n";
 }
 
 if ( $found_left  )  {
@@ -237,10 +231,7 @@ print "$coord\t$geneLeft\_Downstream\t$lineLeft\n";
 }
 
 
-
-
                                          }
-
 
 }
 
