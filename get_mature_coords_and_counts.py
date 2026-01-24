@@ -3,7 +3,7 @@ import csv
 import os
 import re
 import sys
-#dir_fd = os.open('/usr/users/ga002/pensodl/', os.O_RDONLY)
+
 filename = sys.argv[1]
 names=[]
 ages=[]
@@ -12,7 +12,7 @@ plus='+'
 fivep=0
 threep=0
 cont2=0
-#with open('data.csv','r') as f:
+
 with open(filename, "r") as f:
 	for line in f:
 		match = re.search('/', line)
