@@ -1,5 +1,5 @@
 # Small_RNA_analysis
-Mix of code used to analyse small RNA read data
+Collection of scripts used to analyse small RNA expression and genome annotation data
 
 
 ## get_flanking_genes_from_coordinates.pl
